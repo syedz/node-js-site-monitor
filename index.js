@@ -13,6 +13,11 @@ var fs = require('fs');
 var handlers = require('./lib/handlers');
 var helpers = require('./lib/helpers');
 
+// @TODO GET RID OF THIS
+// helpers.sendTwilioSms('9055801151', 'Hello', function(err) {
+//     console.log('This was the error', err);
+// });
+
 // TESTING
 // @TODO delete this
 // _data.write('test', 'newFile', { foo: 'bar' }, function(err) {
