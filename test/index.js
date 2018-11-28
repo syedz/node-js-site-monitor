@@ -2,38 +2,18 @@
  * Test runner
  */
 
-// Dependencies
-var helpers = require('./../lib/helpers');
-var assert = require('assert');
+// Override the NODE_ENV variable
+process.env.NODE_ENV = 'testing';
 
 // Application logic for the test runner
 _app = {};
 
 // Container for the tests
-_app.tests = {
-    unit: {}
-};
+_app.tests = {};
 
-// Assert that the getANumber function is returning a number
-_app.tests.unit['helpers.getANumber should return number'] = function(done) {
-    var val = helpers.getANumber();
-    assert.equal(typeof val, 'number');
-    done();
-};
-
-// Assert that the getANumber function is returning a 1
-_app.tests.unit['helpers.getANumber should return 1'] = function(done) {
-    var val = helpers.getANumber();
-    assert.equal(val, 1);
-    done();
-};
-
-// Assert that the getANumber function is returning a 2
-_app.tests.unit['helpers.getANumber should return 2'] = function(done) {
-    var val = helpers.getANumber();
-    assert.equal(val, 2);
-    done();
-};
+// Add on the unit tests
+_app.tests.unit = require('./unit');
+_app.tests.api = require('./api');
 
 // Count all the tests
 _app.countTests = function() {
@@ -130,6 +110,7 @@ _app.produceTestReport = function(limit, successes, errors) {
 
     console.log('');
     console.log('----------END TEST REPORT----------');
+    process.exit(0);
 };
 
 // Run the tests
